@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Online Store</h1>
+        <nav>
+            <button onclick="showSection('catalog')">Product Catalog</button>
+            <button onclick="showSection('cart')">View Cart</button>
+            <button onclick="showSection('orders')">My Orders</button>
+        </nav>
+    </header>
+    
+    <main>
+        <!-- Product Catalog -->
+        <section id="catalog">
+            <h2>Product Catalog</h2>
+            <div class="product" id="product1">
+                <img src="product1.jpg" alt="Product 1">
+                <h3>Product 1</h3>
+                <p>Price: $10.00</p>
+                <button onclick="addToCart('Product 1', 10.00)">Add to Cart</button>
+            </div>
+            <div class="product" id="product2">
+                <img src="product2.jpg" alt="Product 2">
+                <h3>Product 2</h3>
+                <p>Price: $15.00</p>
+                <button onclick="addToCart('Product 2', 15.00)">Add to Cart</button>
+            </div>
+            <div class="product" id="product3">
+                <img src="product3.jpg" alt="Product 3">
+                <h3>Product 3</h3>
+                <p>Price: $20.00</p>
+                <button onclick="addToCart('Product 3', 20.00)">Add to Cart</button>
+            </div>
+        </section>
+
+        <!-- Shopping Cart -->
+        <section id="cart" style="display:none;">
+            <h2>Shopping Cart</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="cartItems">
+                    <!-- Items will be dynamically added here -->
+                </tbody>
+            </table>
+            <h3 id="cartTotal">Total: $0.00</h3>
+            <button onclick="checkout()">Checkout</button>
+        </section>
+
+        <!-- Checkout Section -->
+        <section id="checkout" style="display:none;">
+            <h2>Checkout</h2>
+            <form id="checkoutForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" rows="4" required></textarea><br>
+
+                <label for="payment">Payment Method:</label>
+                <select id="payment" name="payment" required>
+                    <option value="Credit Card">Credit Card</option>
+                    <option value="PayPal">PayPal</option>
+                    <option value="Cash on Delivery">Cash on Delivery</option>
+                </select><br>
+
+                <button type="button" onclick="processCheckout()">Place Order</button>
+            </form>
+        </section>
+
+        <!-- Orders Section -->
+        <section id="orders" style="display:none;">
+            <h2>My Orders</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Products</th>
+                        <th>Total Amount</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody id="orderList">
+                    <!-- Orders will be dynamically added here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
